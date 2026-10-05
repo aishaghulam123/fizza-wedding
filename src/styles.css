@@ -1,0 +1,250 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * THE CRIMSON ROYAL HOUR — design system
+ * Maroon-dominant palette with antique gold metal, all values in oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-maroon: var(--maroon);
+  --color-burgundy: var(--burgundy);
+  --color-crimson: var(--crimson);
+  --color-gold: var(--gold);
+  --color-champagne: var(--champagne);
+  --color-midnight: var(--midnight);
+  --color-ivory: var(--ivory);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-label: var(--font-label);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* palette — lightened maroon shades, still deep and royal, not black */
+  --maroon: oklch(0.385 0.115 16.8);
+  --burgundy: oklch(0.445 0.118 13.7);
+  --crimson: oklch(0.52 0.135 13.5);
+  --gold: oklch(0.72 0.115 83);
+  --champagne: oklch(0.875 0.043 89.4);
+  --midnight: oklch(0.205 0.052 12.6);
+  --ivory: oklch(0.941 0.019 84.9);
+
+  --background: var(--midnight);
+  --foreground: var(--ivory);
+  --card: var(--maroon);
+  --card-foreground: var(--ivory);
+  --popover: var(--maroon);
+  --popover-foreground: var(--ivory);
+  --primary: var(--gold);
+  --primary-foreground: var(--midnight);
+  --secondary: var(--burgundy);
+  --secondary-foreground: var(--champagne);
+  --muted: oklch(0.3 0.075 14);
+  --muted-foreground: oklch(0.76 0.03 84);
+  --accent: var(--crimson);
+  --accent-foreground: var(--champagne);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: var(--ivory);
+  --border: oklch(0.72 0.115 83 / 28%);
+  --input: oklch(0.72 0.115 83 / 24%);
+  --ring: oklch(0.72 0.115 83 / 55%);
+
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Marcellus", "Cormorant Garamond", serif;
+  --font-label: "Marcellus", serif;
+
+  /* materials */
+  --gradient-gold: linear-gradient(
+    100deg,
+    oklch(0.44 0.09 68) 0%,
+    oklch(0.96 0.085 93) 26%,
+    oklch(0.74 0.135 83) 48%,
+    oklch(0.98 0.075 95) 68%,
+    oklch(0.47 0.095 70) 100%
+  );
+  /* deeper, lower-key gold — for gold text sitting on the ivory/cream card,
+     where the bright shimmer stops in --gradient-gold would wash out */
+  --gradient-gold-deep: linear-gradient(
+    100deg,
+    oklch(0.4 0.085 66) 0%,
+    oklch(0.6 0.135 78) 24%,
+    oklch(0.82 0.145 85) 46%,
+    oklch(0.56 0.125 76) 68%,
+    oklch(0.37 0.08 64) 100%
+  );
+  --gradient-velvet: radial-gradient(
+    120% 100% at 50% 0%,
+    oklch(0.44 0.12 14) 0%,
+    oklch(0.32 0.1 15) 45%,
+    oklch(0.205 0.052 12.6) 100%
+  );
+  --gradient-vignette: radial-gradient(
+    75% 65% at 50% 45%,
+    transparent 0%,
+    oklch(0.28 0.06 12.6 / 30%) 65%,
+    oklch(0.22 0.05 12 / 58%) 100%
+  );
+  --shadow-chamber: 0 40px 120px -40px oklch(0.13 0.045 12 / 90%);
+  --shadow-gold: 0 0 0 1px oklch(0.72 0.115 83 / 35%), 0 18px 60px -30px oklch(0.72 0.115 83 / 45%);
+  --ease-royal: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    font-synthesis-weight: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+  }
+
+  ::selection {
+    background: oklch(0.72 0.115 83 / 30%);
+  }
+}
+
+@utility velvet {
+  background-image: var(--gradient-velvet);
+}
+
+/* Directional velvet weave, kept extremely subtle */
+@utility velvet-weave {
+  background-image:
+    repeating-linear-gradient(
+      93deg,
+      oklch(1 0 0 / 2.2%) 0px,
+      oklch(1 0 0 / 0%) 2px,
+      oklch(0 0 0 / 3%) 4px,
+      oklch(1 0 0 / 0%) 6px
+    ),
+    var(--gradient-velvet);
+}
+
+@utility vignette {
+  background-image: var(--gradient-vignette);
+}
+
+@utility gold-leaf {
+  background-image: var(--gradient-gold);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility gold-rule {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.72 0.115 83 / 20%) 12%,
+    oklch(0.9 0.05 90 / 85%) 50%,
+    oklch(0.72 0.115 83 / 20%) 88%,
+    transparent
+  );
+}
+
+@utility label-caps {
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.42em;
+  font-size: 0.6875rem;
+  color: var(--color-gold);
+}
+
+@utility scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* engraved text reveal: mask wipes with a travelling light */
+@utility engrave {
+  --engrave: 0%;
+  background-image: var(--gradient-gold);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 var(--engrave),
+    transparent calc(var(--engrave) + 9%)
+  );
+  mask-image: linear-gradient(90deg, #000 0%, #000 var(--engrave), transparent calc(var(--engrave) + 9%));
+}
+
+/* same engrave mask-wipe reveal as .engrave, but with the lower-key gold —
+   use on gold text that sits on the ivory invitation card */
+@utility engrave-deep {
+  --engrave: 0%;
+  background-image: var(--gradient-gold-deep);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 var(--engrave),
+    transparent calc(var(--engrave) + 9%)
+  );
+  mask-image: linear-gradient(90deg, #000 0%, #000 var(--engrave), transparent calc(var(--engrave) + 9%));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
