@@ -5,7 +5,7 @@
 export const invitation = {
   brideName: "Fizza",
   groomName: "Abdul Qadir",
-  initials: "F & A",
+  initials: "F & Q",
   baraatDate: "23 October 2026",
   eventTime: "09:00 PM",
   venueName: "The Imperial Marquee",

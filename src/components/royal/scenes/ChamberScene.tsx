@@ -119,12 +119,7 @@ export function ChamberScene() {
                   </div>
                   <div>
                     <dt className="label-caps text-[0.55rem] text-[oklch(0.48_0.05_72)]">Location</dt>
-                    <dd className="mt-2 font-display text-lg">{invitation.venueLocation}</dd>
-                    
-                  </div>
-                  {invitation.showVenue && (
-  <div className="col-span-full flex justify-center">
-    <button
+                    <dd className="mt-2 font-display text-lg"> <button
       onClick={() => window.open(invitation.venueMapUrl, "_blank", "noopener,noreferrer")}
       className="label-caps mt-1 inline-flex items-center gap-2 rounded-full border border-gold/40 px-5 py-2 text-[0.55rem] text-gold transition-colors hover:border-gold hover:bg-gold/10"
     >
@@ -132,10 +127,11 @@ export function ChamberScene() {
         <path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z" />
         <circle cx="12" cy="10" r="2.5" />
       </svg>
-      Get Directions
-    </button>
-  </div>
-)}
+      View Location
+    </button></dd>
+                    
+                  </div>
+                 
                 </>
               )}
             </dl>
